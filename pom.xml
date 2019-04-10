@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>cn.zhiu</groupId>
+    <artifactId>zhiu-parent-pom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <branch>dev</branch>
+                <config.url>localhost</config.url>
+                <exculde.first.branch>qa</exculde.first.branch>
+                <exculde.second.branch>release</exculde.second.branch>
+            </properties>
+            <activation>
+                <property>
+                    <name>!smart.hardware.build.type</name>
+                </property>
+            </activation>
+        </profile>
+        <!--<profile>-->
+            <!--<id>devDoc</id>-->
+            <!--<properties>-->
+                <!--<branch>dev_doc</branch>-->
+            <!--</properties>-->
+            <!--<activation>-->
+                <!--<property>-->
+                    <!--<name>smart.hardware.build.type</name>-->
+                    <!--<value>doc</value>-->
+                <!--</property>-->
+            <!--</activation>-->
+        <!--</profile>-->
+        <profile>
+            <id>qa</id>
+            <properties>
+                <branch>qa</branch>
+                <config.url>localhost</config.url>
+                <exculde.first.branch>dev</exculde.first.branch>
+                <exculde.second.branch>release</exculde.second.branch>
+            </properties>
+            <activation>
+                <property>
+                    <name>smart.hardware.build.type</name>
+                    <value>qa</value>
+                </property>
+            </activation>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <branch>release</branch>
+                <config.url>localhost</config.url>
+                <exculde.first.branch>dev</exculde.first.branch>
+                <exculde.second.branch>qa</exculde.second.branch>
+            </properties>
+            <activation>
+                <property>
+                    <name>smart.hardware.build.type</name>
+                    <value>production</value>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+
+
+    <properties>
+        <zhiu.version>1.0.0-SNAPSHOT</zhiu.version>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <!-- Log libs -->
+        <log4j.version>1.2.17</log4j.version>
+        <logback.version>1.1.4</logback.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <commons.logging.version>1.2</commons.logging.version>
+        <commons.lang3.version>3.4</commons.lang3.version>
+        <httpcore.version>4.4.1</httpcore.version>
+        <httpclient.version>4.5</httpclient.version>
+
+        <fastjson.version>1.2.44</fastjson.version>
+        <dozer.version>5.5.1</dozer.version>
+        <guava.version>18.0</guava.version>
+
+        <jedis.version>2.9.0</jedis.version>
+        <druid.version>1.1.16</druid.version>
+
+        <!-- for maven compiler plugin -->
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+        <maven.jar.plugin.version>2.6</maven.jar.plugin.version>
+        <maven.clean.plugin.version>2.6.1</maven.clean.plugin.version>
+        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+        <maven.war.plugin.version>2.6</maven.war.plugin.version>
+        <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+        <maven.assembly.plugin.version>2.5.3</maven.assembly.plugin.version>
+        <maven.source.plugin.version>2.4</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
+        <maven.enforcer.plugin.version>1.4</maven.enforcer.plugin.version>
+        <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
+        <apt.maven.plugin.version>1.1.3</apt.maven.plugin.version>
+
+
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+        <file.encoding>UTF-8</file.encoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--lib zhiu bean-->
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>user-bean</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+
+            <!--lib zhiu base-api-->
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>base-user-api</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+
+
+            <!--lib zhiu restful-->
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>restful-user</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+
+
+            <!--lib zhiu framework-->
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>zhiu-restful-core</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>zhiu-configuration</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>zhiu-bean-core</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>zhiu-base-core</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+
+
+            <!-- Log libs -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven.jar.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.source.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven.war.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven.assembly.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${plugin.enforcer.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven.clean.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build.helper.maven.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.mysema.maven</groupId>
+                    <artifactId>apt-maven-plugin</artifactId>
+                    <version>${apt.maven.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
