@@ -26,6 +26,7 @@
                 <property>
                     <name>!smart.hardware.build.type</name>
                 </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <!--<profile>-->
