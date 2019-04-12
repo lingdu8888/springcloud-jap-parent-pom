@@ -30,16 +30,16 @@
             </activation>
         </profile>
         <!--<profile>-->
-            <!--<id>devDoc</id>-->
-            <!--<properties>-->
-                <!--<branch>dev_doc</branch>-->
-            <!--</properties>-->
-            <!--<activation>-->
-                <!--<property>-->
-                    <!--<name>smart.hardware.build.type</name>-->
-                    <!--<value>doc</value>-->
-                <!--</property>-->
-            <!--</activation>-->
+        <!--<id>devDoc</id>-->
+        <!--<properties>-->
+        <!--<branch>dev_doc</branch>-->
+        <!--</properties>-->
+        <!--<activation>-->
+        <!--<property>-->
+        <!--<name>smart.hardware.build.type</name>-->
+        <!--<value>doc</value>-->
+        <!--</property>-->
+        <!--</activation>-->
         <!--</profile>-->
         <profile>
             <id>qa</id>
@@ -78,6 +78,7 @@
         <zhiu.version>1.0.0-SNAPSHOT</zhiu.version>
         <java.version>1.8</java.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <springframework.version>5.1.6.RELEASE</springframework.version>
         <!-- Log libs -->
         <log4j.version>1.2.17</log4j.version>
         <logback.version>1.1.4</logback.version>
@@ -93,6 +94,7 @@
 
         <jedis.version>2.9.0</jedis.version>
         <druid.version>1.1.16</druid.version>
+        <commons-io.version>2.2</commons-io.version>
 
         <!-- for maven compiler plugin -->
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
@@ -234,6 +236,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -302,9 +316,9 @@
                     <version>${maven.assembly.plugin.version}</version>
                 </plugin>
                 <!--<plugin>-->
-                    <!--<groupId>org.apache.maven.plugins</groupId>-->
-                    <!--<artifactId>maven-enforcer-plugin</artifactId>-->
-                    <!--<version>${plugin.enforcer.version}</version>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-enforcer-plugin</artifactId>-->
+                <!--<version>${plugin.enforcer.version}</version>-->
                 <!--</plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
