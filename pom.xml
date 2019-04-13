@@ -18,9 +18,9 @@
             <id>dev</id>
             <properties>
                 <branch>dev</branch>
-                <config.url>localhost3</config.url>
+                <config.url>localhost</config.url>
                 <config.port>7002</config.port>
-                <eureka.url>localhost3</eureka.url>
+                <eureka.url>localhost</eureka.url>
                 <eureka.port>7004</eureka.port>
                 <exculde.first.branch>qa</exculde.first.branch>
                 <exculde.second.branch>release</exculde.second.branch>
