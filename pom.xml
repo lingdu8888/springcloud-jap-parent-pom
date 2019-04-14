@@ -124,11 +124,23 @@
                 <classifier>${branch}</classifier>
                 <version>${zhiu.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>cloud-disk-bean</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
 
             <!--lib zhiu base-api-->
             <dependency>
                 <groupId>cn.zhiu</groupId>
                 <artifactId>base-user-api</artifactId>
+                <classifier>${branch}</classifier>
+                <version>${zhiu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.zhiu</groupId>
+                <artifactId>base-cloud-disk-api</artifactId>
                 <classifier>${branch}</classifier>
                 <version>${zhiu.version}</version>
             </dependency>
