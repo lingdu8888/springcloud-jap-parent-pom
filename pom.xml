@@ -20,8 +20,12 @@
                 <branch>dev</branch>
                 <config.url>localhost</config.url>
                 <config.port>7002</config.port>
+                <config.username>zhiuroot</config.username>
+                <config.password>zhiuroot</config.password>
                 <eureka.url>localhost</eureka.url>
                 <eureka.port>7004</eureka.port>
+                <eureka.username>zhiuroot</eureka.username>
+                <eureka.password>zhiuroot</eureka.password>
                 <exculde.first.branch>qa</exculde.first.branch>
                 <exculde.second.branch>release</exculde.second.branch>
             </properties>
@@ -37,8 +41,12 @@
                 <branch>qa</branch>
                 <config.url>localhost</config.url>
                 <config.port>7002</config.port>
+                <config.username>zhiuroot</config.username>
+                <config.password>zhiuroot</config.password>
                 <eureka.url>localhost</eureka.url>
                 <eureka.port>7004</eureka.port>
+                <eureka.username>zhiuroot</eureka.username>
+                <eureka.password>zhiuroot</eureka.password>
                 <exculde.first.branch>dev</exculde.first.branch>
                 <exculde.second.branch>release</exculde.second.branch>
             </properties>
@@ -55,8 +63,12 @@
                 <branch>release</branch>
                 <config.url>localhost2</config.url>
                 <config.port>7002</config.port>
+                <config.username>zhiuroot</config.username>
+                <config.password>zhiuroot</config.password>
                 <eureka.url>localhost2</eureka.url>
                 <eureka.port>7004</eureka.port>
+                <eureka.username>zhiuroot</eureka.username>
+                <eureka.password>zhiuroot</eureka.password>
                 <exculde.first.branch>dev</exculde.first.branch>
                 <exculde.second.branch>qa</exculde.second.branch>
             </properties>
