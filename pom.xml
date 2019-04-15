@@ -18,12 +18,12 @@
             <id>dev</id>
             <properties>
                 <branch>dev</branch>
-                <config.url>localhost</config.url>
-                <config.port>7002</config.port>
+                <config.url>180.97.75.98</config.url>
+                <config.port>60030</config.port>
                 <config.username>zhiuroot</config.username>
                 <config.password>zhiuroot</config.password>
-                <eureka.url>localhost</eureka.url>
-                <eureka.port>7004</eureka.port>
+                <eureka.url>180.97.75.98</eureka.url>
+                <eureka.port>60031</eureka.port>
                 <eureka.username>zhiuroot</eureka.username>
                 <eureka.password>zhiuroot</eureka.password>
                 <exculde.first.branch>qa</exculde.first.branch>
